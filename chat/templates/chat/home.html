@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1 class="text-center mb-5">Welcome to Chatty</h1>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Create a New Room</h5>
+          <a href="{% url 'chat:create_room' %}" class="btn btn-success">Create Room</a>
+        </div>
+      </div>
+      <div class="card-deck">
+        {% for room in rooms %}
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ room.name }}</h5>
+            <p class="card-text">{{ room.description }}</p>
+            <a href="{{ room.get_absolute_url }}" class="btn btn-primary">Join Chat</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
